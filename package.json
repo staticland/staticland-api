@@ -1,0 +1,43 @@
+{
+  "name": "staticland-serverr",
+  "version": "1.0.0",
+  "description": "the main static.land api server",
+  "main": "index.js",
+  "scripts": {
+    "deps": "dependency-check . && dependency-check . --unused --no-dev",
+    "lint": "standard",
+    "test": "npm run deps && npm run lint && npm run test:node",
+    "test:node": "tape tests/*.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staticland/staticland-server.git"
+  },
+  "keywords": [
+    "static",
+    "static",
+    "sites"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/staticland/staticland-server/issues"
+  },
+  "homepage": "https://github.com/staticland/staticland-server#readme",
+  "devDependencies": {
+    "dependency-check": "^2.5.1",
+    "standard": "^7.0.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "appa": "^4.0.0",
+    "letiny": "^0.1.1",
+    "level": "^1.4.0",
+    "level-model": "^2.0.2",
+    "mkdirp": "^0.5.1",
+    "path-exists": "^3.0.0",
+    "tar-fs": "^1.12.0",
+    "xtend": "^4.0.1"
+  }
+}
