@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rm -rf db
+rm -rf sites/*
+rm -rf certs/*
+rm -rf vhosts/*
