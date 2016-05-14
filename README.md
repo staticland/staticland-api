@@ -70,7 +70,6 @@ npm i -g forever
 #### start the staticland server
 
 ```
-cd staticland-api
 forever start index.js
 ```
 
