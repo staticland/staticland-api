@@ -1,10 +1,13 @@
+var path = require('path')
 var xtend = require('xtend')
 
 var config = {
   shared: {
     title: 'staticland',
     port: 3322,
-    secret: 'this is not very secret'
+    secret: 'this is not very secret',
+    db: path.join(__dirname, 'db'),
+    requiredScope: 'api:access'
   },
   development: {},
   production: {

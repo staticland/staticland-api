@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+
+var exit = require('exit')
+var level = require('level-party')
+
+var config = require('../config')
+var db = level(config.db)
+
+var basic = require('township-auth/basic')
+var access = require('township-access')(db)
+var token = require('township-token')({ secret: config.secret })
+var auth = require('township-auth')(db, {
+  providers: { basic: basic }
+})
+
+var email = process.argv[2]
+var password = process.argv[3]
+var requiredScope = config.requiredScope
+
+if (!email) {
+  error('email is required', { usage: true })
+}
+
+if (!password) {
+  error('password is required', { usage: true })
+}
+
+var creds = {
+  basic: {
+    email: email,
+    password: password
+  }
+}
+
+auth.create(creds, function (err, authData) {
+  if (err) return error(err.message)
+  access.create(authData.key, [requiredScope], function (err, accessData) {
+    if (err) return error(err.message)
+    console.log('account created')
+    console.log('auth', authData)
+    console.log('access', accessData)
+  })
+})
+
+function error (msg, opts) {
+  console.log(`
+    ERROR:
+
+      ${msg}
+  `)
+  if (opts.usage) usage()
+  exit(1)
+}
+
+function usage () {
+  console.log(`
+    USAGE:
+
+      ./bin/admin {email} {password}
+    
+    DESCRIPTION:
+    
+      create an account with the required 
+      access permissions to use the server
+      
+      email and password are required 
+    
+    EXAMPLE:
+    
+      ./bin/admin hi@static.land oooohsecretpasswordoooh
+`)
+}
