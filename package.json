@@ -39,6 +39,7 @@
     "level-party": "^3.0.4",
     "mkdirp": "^0.5.1",
     "path-exists": "^3.0.0",
+    "rimraf": "^2.5.2",
     "tar-fs": "^1.12.0",
     "township-access": "^1.0.0",
     "township-auth": "^2.0.3",
