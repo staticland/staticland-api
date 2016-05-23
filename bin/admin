@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var exit = require('exit')
-var level = require('level-party')
+var level = require('level')
 
 var config = require('../config')
 var db = level(config.db)
