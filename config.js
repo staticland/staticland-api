@@ -7,7 +7,8 @@ var config = {
     port: 3322,
     secret: 'this is not very secret',
     db: path.join(__dirname, 'db'),
-    requiredScope: 'api:access'
+    requiredScope: 'api:access',
+    testing: true
   },
   development: {},
   production: {
