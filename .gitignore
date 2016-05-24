@@ -8,3 +8,5 @@ certs/*
 !certs/.gitkeep
 db
 tmp
+*.log
+config.js

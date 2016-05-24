@@ -1,7 +1,7 @@
 {
-  "name": "staticland-serverr",
+  "name": "staticland-api",
   "version": "1.0.0",
-  "description": "the main static.land api server",
+  "description": "the main staticland api server",
   "main": "index.js",
   "scripts": {
     "deps": "dependency-check . && dependency-check . --unused --no-dev",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/staticland/staticland-server.git"
+    "url": "git+https://github.com/staticland/staticland-api.git"
   },
   "keywords": [
     "static",
@@ -21,9 +21,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/staticland/staticland-server/issues"
+    "url": "https://github.com/staticland/staticland-api/issues"
   },
-  "homepage": "https://github.com/staticland/staticland-server#readme",
+  "homepage": "https://github.com/staticland/staticland-api#readme",
   "devDependencies": {
     "dependency-check": "^2.5.1",
     "standard": "^7.0.1",
@@ -32,12 +32,18 @@
   },
   "dependencies": {
     "appa": "^4.0.0",
+    "exit": "^0.1.2",
     "letiny": "^0.1.1",
     "level": "^1.4.0",
     "level-model": "^2.0.2",
+    "level-party": "^3.0.4",
     "mkdirp": "^0.5.1",
     "path-exists": "^3.0.0",
+    "rimraf": "^2.5.2",
     "tar-fs": "^1.12.0",
+    "township-access": "^1.0.0",
+    "township-auth": "^2.0.3",
+    "township-token": "^1.0.0",
     "xtend": "^4.0.1"
   }
 }
