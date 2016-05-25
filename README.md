@@ -67,6 +67,28 @@ sudo service nginx restart
 npm i -g forever
 ```
 
+#### Create `config.js` file
+
+Copy the example config file:
+
+```
+cp example.config.js config.js
+```
+
+#### Create the users that are able to deploy sites
+
+```
+./bin/admin {email} {password}
+```
+
+Example:
+
+```
+./bin/admin hi@example.com notverysecretpassword
+```
+
+This creates auth records & access permissions that uses the default required scope that's defined in the `config.js` file.
+
 #### start the staticland server
 
 ```
