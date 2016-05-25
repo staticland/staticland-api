@@ -3,11 +3,35 @@
 A secure home for your static sites.
 
 ## Features
-
 - One command to deploy a site.
 - Automatic SSL using Let's Encrypt.
 - Use any static site generator.
-- MIT licensed. Host it yourself. Use it how you want.
+- Host it yourself. Use it how you want.
+
+## Limitations
+- DNS records must be set up and propogated before deploying a site for the first time.
+- Setting aliases or redirects is not currently supported.
+- By default the server admin must explicitly give access to users. This will be optional in future releases.
+
+## Deploying sites
+Using the [staticland command-line tool]():
+
+Login to a staticland server:
+
+```
+  staticland login \
+    --email wat@static.land \
+    --password thisisnotapassword \
+    --server https://api.static.land
+```
+
+One command to deploy a site with SSL:
+
+```
+  staticland deploy \
+    --source /path/to/site \
+    --domain example.com
+```
 
 ## Install
 
@@ -77,6 +101,8 @@ cp example.config.js config.js
 
 #### Create the users that are able to deploy sites
 
+For each user, run the admin command:
+
 ```
 ./bin/admin {email} {password}
 ```
@@ -94,7 +120,6 @@ This creates auth records & access permissions that uses the default required sc
 ```
 forever start index.js
 ```
-
 
 ## License
 [MIT](LICNESE.md)
