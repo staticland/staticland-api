@@ -12,9 +12,10 @@ A secure home for your static sites.
 - DNS records must be set up and propogated before deploying a site for the first time.
 - Setting aliases or redirects is not currently supported.
 - By default the server admin must explicitly give access to users. This will be optional in future releases.
+- The staticland server at api.static.land is not yet publicly usable, so you'll need to set up a staticland instance.
 
 ## Deploying sites
-Using the [staticland command-line tool]():
+Using the [staticland command-line tool](https://github.com/staticland/staticland):
 
 Login to a staticland server:
 
