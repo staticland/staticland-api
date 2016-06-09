@@ -6,13 +6,25 @@ var config = {
     title: 'staticland',
     port: 3322,
     secret: 'this is not very secret',
-    db: path.join(__dirname, 'db'),
-    requiredScope: 'api:access',
+    sitesDir: path.join(__dirname, 'sites'),
+    dbDir: path.join(__dirname, 'sites', 'db'),
+    requiredScopes: {
+      useAPI: 'api:access',
+      createUser: 'user:create'
+    }
+  },
+  development: {
+    requestCerts: false,
+    reloadNginx: 'echo "restarting nginx"'
+  },
+  staging: {
+    requestCerts: true,
+    secret: process.env.STATICLAND_SECRET,
     testing: true
   },
-  development: {},
   production: {
-    secret: process.env.STATICLAND_SECRET
+    secret: process.env.STATICLAND_SECRET,
+    testing: false
   }
 }
 
