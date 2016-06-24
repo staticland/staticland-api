@@ -46,7 +46,8 @@ test('site object has a dirs object & creates directories', function (t) {
 })
 
 test('site.firstDeploy', function (t) {
-  site.firstDeploy('test1.com', function (err, obj) {
+  var opts = { domain: 'test1.com', owner: 'superuser' }
+  site.firstDeploy(opts, function (err, obj) {
     t.notOk(err)
     t.ok(obj)
     t.equal(obj.deploys, 1)
@@ -73,7 +74,8 @@ test('site.redirect', function (t) {
 })
 
 test('site.find', function (t) {
-  site.firstDeploy('test2.com', function (err, obj) {
+  var opts = { domain: 'test2.com', owner: 'superuser' }
+  site.firstDeploy(opts, function (err, obj) {
     t.notOk(err)
     site.find('test2.com', function (err, found) {
       t.notOk(err)
@@ -90,6 +92,32 @@ test('site.destroy', function (t) {
     site.find('test2.com', function (err, obj) {
       t.ok(err)
       t.equal(err.message, 'Not found')
+      t.end()
+    })
+  })
+})
+
+test('site.addOwner', function (t) {
+  site.find('test1.com', function (err, obj) {
+    t.notOk(err)
+    var opts = { domain: 'test1.com', owner: 'pizzapro' }
+    site.addOwner(opts, function (err, updated) {
+      t.notOk(err)
+      t.equal(updated.owners.length, 2)
+      t.ok(updated.owners.indexOf('pizzapro') > -1)
+      t.end()
+    })
+  })
+})
+
+test('site.removeOwner', function (t) {
+  site.find('test1.com', function (err, obj) {
+    t.notOk(err)
+    var opts = { domain: 'test1.com', owner: 'pizzapro' }
+    site.removeOwner(opts, function (err, updated) {
+      t.notOk(err)
+      t.equal(updated.owners.length, 1)
+      t.ok(updated.owners.indexOf('pizzapro') === -1)
       t.end()
     })
   })

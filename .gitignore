@@ -4,3 +4,4 @@ db
 tmp
 *.log
 config.js
+sites/*
