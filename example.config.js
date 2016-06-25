@@ -4,6 +4,7 @@ var xtend = require('xtend')
 var config = {
   shared: {
     title: 'staticland',
+    host: 'http://127.0.0.1',
     port: 3322,
     secret: 'this is not very secret',
     sitesDir: path.join(__dirname, 'sites'),
@@ -19,7 +20,6 @@ var config = {
   },
   staging: {
     requestCerts: true,
-    secret: process.env.STATICLAND_SECRET,
     testing: true
   },
   production: {

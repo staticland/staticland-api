@@ -36,6 +36,7 @@
     "letiny": "^0.1.1",
     "level": "^1.4.0",
     "level-model": "^2.0.2",
+    "level-party": "^3.0.4",
     "mkdirp": "^0.5.1",
     "nodemailer": "^2.4.2",
     "nodemailer-sendgrid-transport": "^0.2.0",
