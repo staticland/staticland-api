@@ -17,7 +17,7 @@ A secure home for your static sites.
 
 ```
 sudo apt-get update
-sudo apt-get git bc build-essential nginx
+sudo apt-get install git bc build-essential nginx
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 ```
 
