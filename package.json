@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "appa": "^4.0.0",
+    "exit": "^0.1.2",
     "letiny": "^0.1.1",
     "level": "^1.4.0",
     "level-model": "^2.0.2",
