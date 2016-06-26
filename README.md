@@ -45,13 +45,27 @@ cd staticland-api
 npm i
 ```
 
+#### staticland config
+
+Copy the example config file and make changes if needed:
+
+```
+cp example.config.js config.js
+```
+
 #### nginx config
 
 You can use the nginx config files found in [staticland/config](https://github.com/staticland/config).
 
+Make sure to:
+
+- replace any references to `api.static.land` to the hostname you're using
+- change directory references if you place staticland or the sites in a different directory
+
 #### Create cert for api server
 
 ```
+cd ~
 ./certbot-auto certonly --standalone --agree-tos --redirect --duplicate --text --email hi@static.land -d api.static.land
 ```
 
