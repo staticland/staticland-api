@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+var exit = require('exit')
+
+var config = require('../config')
+var dirs = require('../lib/site-directories')(config)
+var renew = require('../lib/renew')
+
+renew(config, function () {
+  console.log('weeeeee')
+})

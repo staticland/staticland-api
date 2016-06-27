@@ -1,12 +1,7 @@
 .DS_Store
 node_modules
-sites/*
-!sites/.gitkeep
-vhosts/*
-!vhosts/.gitkeep
-certs/*
-!certs/.gitkeep
 db
 tmp
 *.log
 config.js
+sites/*

@@ -1,21 +1,15 @@
 #!/usr/bin/env node
 
 var exit = require('exit')
-var level = require('level')
 
 var config = require('../config')
-var db = level(config.db)
-
-var basic = require('township-auth/basic')
-var access = require('township-access')(db)
-var token = require('township-token')({ secret: config.secret })
-var auth = require('township-auth')(db, {
-  providers: { basic: basic }
-})
+var createAdminAccount = require('../lib/create-admin-account')
+var dirs = require('../lib/site-directories')(config)
+dirs.init()
 
 var email = process.argv[2]
 var password = process.argv[3]
-var requiredScope = config.requiredScope
+var requiredScopes = config.requiredScopes
 
 if (!email) {
   error('email is required', { usage: true })
@@ -32,14 +26,13 @@ var creds = {
   }
 }
 
-auth.create(creds, function (err, authData) {
+createAdminAccount(config, creds, function (err, account) {
   if (err) return error(err.message)
-  access.create(authData.key, [requiredScope], function (err, accessData) {
-    if (err) return error(err.message)
-    console.log('account created')
-    console.log('auth', authData)
-    console.log('access', accessData)
-  })
+  console.log('account created')
+  console.log('key', account.key)
+  console.log('email', account.auth.basic.email)
+  console.log('scopes', account.access.scopes)
+  console.log('token', account.token)
 })
 
 function error (msg, opts) {
@@ -57,16 +50,16 @@ function usage () {
     USAGE:
 
       ./bin/admin {email} {password}
-    
+
     DESCRIPTION:
-    
-      create an account with the required 
+
+      create an account with the required
       access permissions to use the server
-      
-      email and password are required 
-    
+
+      email and password are required
+
     EXAMPLE:
-    
+
       ./bin/admin hi@static.land oooohsecretpasswordoooh
 `)
 }

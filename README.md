@@ -17,7 +17,7 @@ A secure home for your static sites.
 
 ```
 sudo apt-get update
-sudo apt-get git bc build-essential nginx
+sudo apt-get install git bc build-essential nginx
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 ```
 
@@ -40,18 +40,40 @@ chmod a+x ./certbot-auto
 #### Install staticland-api
 
 ```
-https://github.com/staticland/staticland-api.git
+git clone https://github.com/staticland/staticland-api.git
 cd staticland-api
 npm i
+```
+
+#### staticland config
+
+Copy the example config file and make changes if needed:
+
+```
+cp example.config.js config.js
+```
+
+#### set NODE_ENV to production
+
+In the `.bashrc` file of the user that will run the staticland server add:
+
+```
+export NODE_ENV="production"
 ```
 
 #### nginx config
 
 You can use the nginx config files found in [staticland/config](https://github.com/staticland/config).
 
+Make sure to:
+
+- replace any references to `api.static.land` to the hostname you're using
+- change directory references if you place staticland or the sites in a different directory
+
 #### Create cert for api server
 
 ```
+cd ~
 ./certbot-auto certonly --standalone --agree-tos --redirect --duplicate --text --email hi@static.land -d api.static.land
 ```
 
