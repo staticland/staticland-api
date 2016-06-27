@@ -40,7 +40,7 @@ chmod a+x ./certbot-auto
 #### Install staticland-api
 
 ```
-https://github.com/staticland/staticland-api.git
+git clone https://github.com/staticland/staticland-api.git
 cd staticland-api
 npm i
 ```
@@ -51,6 +51,14 @@ Copy the example config file and make changes if needed:
 
 ```
 cp example.config.js config.js
+```
+
+#### set NODE_ENV to production
+
+In the `.bashrc` file of the user that will run the staticland server add:
+
+```
+export NODE_ENV="production"
 ```
 
 #### nginx config
