@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var exit = require('exit')
+var level = require('level-party')
+var config = require('../config')
+var db = config.db || level(config.dbDir)
+var site = require('../lib/site')(db, config)
+
+var stream = site.createReadStream({ keys: false })
+
+stream.on('data', function (item) {
+  console.log(item)
+})
+
+stream.on('end', function () {
+  exit()
+})

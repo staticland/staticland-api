@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+
+var exit = require('exit')
+var level = require('level-party')
+var config = require('../config')
+var db = config.db || level(config.dbDir)
+var site = require('../lib/site')(db, config)
+
+var domain = process.argv[2]
+
+site.destroy(domain, function (err, item) {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('deleted', domain)
+  }
+  exit()
+})
