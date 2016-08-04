@@ -9,6 +9,7 @@ var config = {
     secret: 'this is not very secret',
     sitesDir: path.join(__dirname, 'sites'),
     dbDir: path.join(__dirname, 'sites', 'db'),
+    renewEvery: 30,
     requiredScopes: {
       useAPI: 'api:access',
       createUser: 'user:create'

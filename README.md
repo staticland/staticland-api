@@ -95,6 +95,17 @@ npm i -g forever
 forever start index.js
 ```
 
+#### add a crontab job for renewing certs
+
+```
+crontab -e
+```
+
+```
+00 00 * * * node /home/ubuntu/staticland-api/bin/renew
+```
+
+Sites will get cert renewals based on the `renewEvery` value of config.js file.
 
 ## License
 [MIT](LICNESE.md)
