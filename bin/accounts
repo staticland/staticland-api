@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+var createAuth = require('township-auth')
+var path = require('path')
+var level = require('level-party')
+var basic = require('township-auth/basic')
+var config = require('../config')
+var db = config.db || level(config.dbDir)
+var auth = createAuth(db, { providers: { basic: basic } })
+
+auth.list().on('data', console.log)
