@@ -105,7 +105,7 @@ crontab -e
 00 00 * * * node /home/ubuntu/staticland-api/bin/renew
 ```
 
-Sites will get cert renewals based on the `renewEvery` value of config.js file.
+Sites will get cert renewals based on the `renewEvery` value of the config.js file. The default value of `30` means certs will be renewed every 30 days.
 
 ## License
 [MIT](LICNESE.md)
