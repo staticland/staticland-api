@@ -18,5 +18,5 @@ config.hooks = {
 }
 
 http.createServer(staticland).listen(config.port, function () {
-  staticland.log('listening on 127.0.0.1:' + config.port)
+  console.log('listening on 127.0.0.1:' + config.port)
 })
