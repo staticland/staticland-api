@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "JSONStream": "^1.1.2",
-    "appa": "^4.0.0",
+    "appa": "^5.0.0",
     "exit": "^0.1.2",
     "letiny": "^0.1.1",
     "level": "^1.4.0",
