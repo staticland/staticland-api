@@ -51,12 +51,11 @@ test('log in', function (t) {
 
 test('deploy', function (t) {
   var tarstream = tar.pack(path.join(__dirname, 'example-site'))
-  var options = { domain: 'hi.com', token: token }
+  var options = { domain: 'hi.com', authorization: `Bearer ${token}` }
   staticland.deploy(tarstream, options, function (err, res, body) {
     t.notOk(err)
     t.ok(res)
     t.ok(body)
-    console.log('body', body)
     t.end()
   })
 })
