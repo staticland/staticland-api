@@ -95,17 +95,27 @@ npm i -g forever
 forever start index.js
 ```
 
-#### add a crontab job for renewing certs
+#### renewing certificates 
 
 ```
 crontab -e
 ```
+
+##### add a cron job for renewing site certificates
 
 ```
 00 00 * * * node /home/ubuntu/staticland-api/bin/renew
 ```
 
 Sites will get cert renewals based on the `renewEvery` value of the config.js file. The default value of `30` means certs will be renewed every 30 days.
+
+##### add a con job for renewing the api server certificate
+
+```
+* 00 * * 1 /home/ubuntu/certbot-auto renew --standalone --pre-hook "service nginx stop" --post-hook "service nginx start" --quiet
+```
+
+Every Monday at midnight certbot will check to see if the certificate needs to be renewed.
 
 ## License
 [MIT](LICNESE.md)
