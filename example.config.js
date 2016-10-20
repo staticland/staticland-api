@@ -25,11 +25,11 @@ var config = {
   },
   staging: {
     requestCerts: true,
-    testing: true
+    debug: true
   },
   production: {
     secret: process.env.STATICLAND_SECRET,
-    testing: false
+    debug: false
   }
 }
 
