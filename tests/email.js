@@ -5,7 +5,7 @@ var config = require('../config')
 
 test('send an email', function (t) {
   var mail = createMailer(config.email)
-  
+
   mail.send({
     to: 'sethvincent@gmail.com',
     subject: 'staticland email',
