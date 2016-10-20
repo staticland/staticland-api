@@ -13,6 +13,10 @@ var config = {
     requiredScopes: {
       useAPI: 'api:access',
       createUser: 'user:create'
+    },
+    email: {
+      fromEmail: 'hi@example.com',
+      postmarkAPIKey: 'your api key'
     }
   },
   development: {
