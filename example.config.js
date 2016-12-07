@@ -1,6 +1,6 @@
 var path = require('path')
 var xtend = require('xtend')
-
+ 
 var config = {
   shared: {
     title: 'staticland',
@@ -10,7 +10,7 @@ var config = {
     sitesDir: path.join(__dirname, 'sites'),
     dbDir: path.join(__dirname, 'sites', 'db'),
     renewEvery: 30,
-    reservedSubdomains: [],
+    reservedSubdomains: [], // consider the reserved-usernames package, require('reserved-usernames')
     requiredScopes: {
       useAPI: 'api:access'
     },
