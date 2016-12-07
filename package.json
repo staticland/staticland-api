@@ -2,7 +2,7 @@
   "name": "staticland-api",
   "version": "2.0.1",
   "description": "the main staticland api server",
-  "main": "index.js",
+  "main": "lib/server.js",
   "scripts": {
     "deps": "dependency-check . && dependency-check . --unused --no-dev",
     "lint": "standard",
