@@ -1,6 +1,6 @@
 var fs = require('fs')
 var test = require('tape')
-var config = require('../config')
+var config = require('../example.config')
 var db = require('memdb')()
 var site = require('../lib/site')(db, config)
 
@@ -46,7 +46,7 @@ test('site object has a dirs object & creates directories', function (t) {
 })
 
 test('site.firstDeploy', function (t) {
-  var opts = { domain: 'test1.com', owner: 'superuser' }
+  var opts = { domain: 'test1.com', owners: ['superuser'] }
   site.firstDeploy(opts, function (err, obj) {
     t.notOk(err)
     t.ok(obj)
@@ -74,7 +74,7 @@ test('site.redirect', function (t) {
 })
 
 test('site.find', function (t) {
-  var opts = { domain: 'test2.com', owner: 'superuser' }
+  var opts = { domain: 'test2.com', owners: ['superuser'] }
   site.firstDeploy(opts, function (err, obj) {
     t.notOk(err)
     site.find('test2.com', function (err, found) {

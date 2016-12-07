@@ -4,7 +4,7 @@ var test = require('tape')
 var memdb = require('memdb')
 var tar = require('tar-fs')
 
-var config = require('../config')
+var config = require('../example.config')
 var createAdminAccount = require('../lib/create-admin-account')
 var createServer = require('../lib/server')
 var server

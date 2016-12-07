@@ -1,6 +1,6 @@
 var path = require('path')
 var xtend = require('xtend')
- 
+
 var config = {
   shared: {
     title: 'staticland',
