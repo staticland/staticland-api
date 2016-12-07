@@ -10,9 +10,9 @@ var config = {
     sitesDir: path.join(__dirname, 'sites'),
     dbDir: path.join(__dirname, 'sites', 'db'),
     renewEvery: 30,
+    reservedSubdomains: [],
     requiredScopes: {
-      useAPI: 'api:access',
-      createUser: 'user:create'
+      useAPI: 'api:access'
     },
     email: {
       fromEmail: 'hi@example.com',
