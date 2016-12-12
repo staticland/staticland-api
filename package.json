@@ -37,6 +37,7 @@
   "dependencies": {
     "JSONStream": "^1.2.1",
     "appa": "^6.0.0",
+    "certbot-wrapper": "0.0.0",
     "letiny": "^0.1.1",
     "level-model": "^2.0.4",
     "level-party": "^3.0.4",
