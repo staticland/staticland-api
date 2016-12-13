@@ -4,16 +4,16 @@ server {
 	server_name _;
 
   location / {
-    root /home/ubuntu/staticland-api/html;
+    root /home/staticland/staticland-api/html;
   }
 
   location ~ /.well-known {
     allow all;
-    root /home/ubuntu/staticland-api/sites/certs/$http_host;
+    root /home/staticland/staticland-api/html;
     try_files $uri $uri/ =404;
   }
 
-  error_page 400 401 402 403 404 500 /home/ubuntu/staticland-api/html/404.html;
+  error_page 400 401 402 403 404 500 /home/staticland/staticland-api/html/404.html;
 }
 
 server {
@@ -27,9 +27,9 @@ server {
   server_name api.static.land;
   client_max_body_size 100M;
 
-  ssl_certificate /etc/letsencrypt/live/api.static.land/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/api.static.land/privkey.pem;
-  ssl_trusted_certificate /etc/letsencrypt/live/api.static.land/fullchain.pem;
+  ssl_certificate /home/staticland/staticland-api/live/api.static.land/fullchain.pem;
+  ssl_certificate_key /home/staticland/staticland-api/live/api.static.land/privkey.pem;
+  ssl_trusted_certificate /home/staticland/staticland-api/live/api.static.land/fullchain.pem;
 
   ssl_session_timeout 5m;
   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
@@ -49,10 +49,5 @@ server {
     proxy_pass http://localhost:3322;
   }
 
-  location ~ /.well-known {
-    root /home/ubuntu/staticland-api/sites/certs/$http_host;
-    try_files $uri $uri/;
-  }
-
-  error_page 400 401 402 403 404 500 /home/ubuntu/staticland-api/html/404.html;
+  error_page 400 401 402 403 404 500 /home/staticland/staticland-api/html/404.html;
 }
