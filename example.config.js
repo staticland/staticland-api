@@ -11,6 +11,7 @@ var config = {
     dbDir: path.join(__dirname, 'sites', 'db'),
     renewEvery: 30,
     letsEncryptDir: '/home/staticland/letsencrypt',
+    letsEncryptCommand: '/home/staticland/certbot-auto',
     letsEncryptChallengeDir: '/home/staticland/api/html',
     reservedSubdomains: [], // consider the reserved-usernames package, require('reserved-usernames')
     requiredScopes: {
