@@ -10,6 +10,8 @@ var config = {
     sitesDir: path.join(__dirname, 'sites'),
     dbDir: path.join(__dirname, 'sites', 'db'),
     renewEvery: 30,
+    letsEncryptDir: '/home/staticland/letsencrypt',
+    letsEncryptChallengeDir: '/home/staticland/api/html',
     reservedSubdomains: [], // consider the reserved-usernames package, require('reserved-usernames')
     requiredScopes: {
       useAPI: 'api:access'
