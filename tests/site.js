@@ -73,11 +73,11 @@ test('site.redirect', function (t) {
   })
 })
 
-test('site.find', function (t) {
+test('site.findByDomain', function (t) {
   var opts = { domain: 'test2.com', owners: ['superuser'] }
   site.firstDeploy(opts, function (err, obj) {
     t.notOk(err)
-    site.find('test2.com', function (err, found) {
+    site.findByDomain('test2.com', function (err, found) {
       t.notOk(err)
       t.ok(found)
       t.equal(found.deploys, 1)
@@ -86,10 +86,22 @@ test('site.find', function (t) {
   })
 })
 
+test('get sites by owner', function (t) {
+  var list = []
+  site.find('owners', 'superuser')
+    .on('data', function (data) {
+      list.push(data)
+    })
+    .on('end', function () {
+      t.equal(list.length, 2)
+      t.end()
+    })
+})
+
 test('site.destroy', function (t) {
   site.destroy('test2.com', function (err) {
     t.notOk(err)
-    site.find('test2.com', function (err, obj) {
+    site.findByDomain('test2.com', function (err, obj) {
       t.ok(err)
       t.equal(err.message, 'Not found')
       t.end()
@@ -98,7 +110,7 @@ test('site.destroy', function (t) {
 })
 
 test('site.addOwner', function (t) {
-  site.find('test1.com', function (err, obj) {
+  site.findByDomain('test1.com', function (err, obj) {
     t.notOk(err)
     var opts = { domain: 'test1.com', owner: 'pizzapro' }
     site.addOwner(opts, function (err, updated) {
@@ -111,7 +123,7 @@ test('site.addOwner', function (t) {
 })
 
 test('site.removeOwner', function (t) {
-  site.find('test1.com', function (err, obj) {
+  site.findByDomain('test1.com', function (err, obj) {
     t.notOk(err)
     var opts = { domain: 'test1.com', owner: 'pizzapro' }
     site.removeOwner(opts, function (err, updated) {
