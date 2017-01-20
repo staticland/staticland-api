@@ -37,7 +37,7 @@
   "dependencies": {
     "JSONStream": "^1.2.1",
     "appa": "^6.0.0",
-    "certbot-wrapper": "0.0.0",
+    "certbot-wrapper": "github:sethvincent/certbot-wrapper",
     "corsify": "^2.1.0",
     "level-model": "^2.0.4",
     "level-party": "^3.0.4",
