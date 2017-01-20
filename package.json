@@ -47,7 +47,7 @@
     "rimraf": "^2.5.4",
     "tar-fs": "^1.14.0",
     "through2": "^2.0.3",
-    "township": "github:township/township",
+    "township": "^2.0.0",
     "township-access": "^2.0.0",
     "township-auth": "^2.0.5",
     "township-email": "^1.0.0",
