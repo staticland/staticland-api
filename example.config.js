@@ -18,7 +18,7 @@ var config = {
       useAPI: 'api:access'
     },
     emailTransport: `smtps://${process.env.GMAIL_USER}%40gmail.com:${process.env.GMAIL_PASS}@smtp.gmail.com`,
-    email: 'hi@static.land',
+    fromEmail: 'hi@static.land',
     clientHost: 'http://127.0.0.1:9966'
   },
   development: {
