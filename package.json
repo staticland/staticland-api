@@ -45,6 +45,7 @@
     "octal": "^1.0.0",
     "path-exists": "^3.0.0",
     "rimraf": "^2.5.4",
+    "staticland": "^3.2.1",
     "tar-fs": "^1.14.0",
     "through2": "^2.0.3",
     "township": "^2.0.0",

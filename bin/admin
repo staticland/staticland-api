@@ -25,9 +25,9 @@ var creds = {
   password: password,
   scopes: [
     scopes.app.admin,
-    scopes.datasets.read,
-    scopes.datasets.write,
-    scopes.datasets.destroy
+    scopes.sites.read,
+    scopes.sites.write,
+    scopes.sites.destroy
   ]
 }
 
@@ -35,7 +35,7 @@ township.accounts.register(creds, function (err, account) {
   if (err) return error(err.message)
   console.log('account created')
   console.log('key', account.key)
-  console.log('account', account)
+  console.log('token', account.token)
 })
 
 function error (msg, opts) {

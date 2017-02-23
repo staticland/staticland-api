@@ -20,7 +20,7 @@ var config = {
       app: {
         admin: 'app:admin'
       },
-      datasets: {
+      sites: {
         read: 'sites:read',
         write: 'sites:write',
         destroy: 'sites:destroy'

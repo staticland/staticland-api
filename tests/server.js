@@ -3,37 +3,47 @@ var path = require('path')
 var test = require('tape')
 var memdb = require('memdb')
 var tar = require('tar-fs')
+var createTownship = require('township')
 
-var config = require('../example.config')
-var createAdminAccount = require('../lib/create-admin-account')
+var db = memdb()
 var createServer = require('../lib/server')
+var config = require('../example.config')
+var township = createTownship(db, config)
+var scopes = config.scopes
+
 var server
 var token
+
+function createAdminAccount (creds, callback) {
+  creds.scopes = [
+    scopes.app.admin,
+    scopes.sites.read,
+    scopes.sites.write,
+    scopes.sites.destroy
+  ]
+
+  township.accounts.register(creds, callback)
+}
 
 var staticland = require('staticland')({
   server: config.host + ':' + config.port
 })
 
 test('start server', function (t) {
-  config.db = memdb()
+  config.db = db
   server = http.createServer(createServer(config)).listen(config.port, function () {
     t.end()
   })
 })
 
 test('create an account', function (t) {
-  var creds = { basic: { email: 'hi@example.com', password: 'hihi' } }
-  createAdminAccount(config, creds, function (err, account) {
+  var creds = { email: 'hi@example.com', password: 'hihi' }
+  createAdminAccount(creds, function (err, account) {
     t.notOk(err)
     t.ok(account)
     t.ok(account.key)
-    t.ok(account.auth)
-    t.ok(account.auth.basic)
-    t.equal(account.auth.basic.email, 'hi@example.com')
-    t.notOk(account.auth.basic.hash)
-    t.notOk(account.auth.basic.salt)
-    t.ok(account.access.scopes)
     t.ok(account.token)
+    token = account.token
     t.end()
   })
 })
