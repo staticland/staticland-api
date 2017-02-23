@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
 var exit = require('exit')
+var level = require('level-party')
+var createTownship = require('township')
 
 var config = require('../config')
-var createAdminAccount = require('../lib/create-admin-account')
-var dirs = require('../lib/site-directories')(config)
-dirs.init()
+var db = level(config.dbDir)
+var township = createTownship(db, config)
 
 var email = process.argv[2]
 var password = process.argv[3]
-var requiredScopes = config.requiredScopes
+var scopes = config.scopes
 
 if (!email) {
   error('email is required', { usage: true })
@@ -20,46 +21,42 @@ if (!password) {
 }
 
 var creds = {
-  basic: {
-    email: email,
-    password: password
-  }
+  email: email,
+  password: password,
+  scopes: [
+    scopes.app.admin,
+    scopes.datasets.read,
+    scopes.datasets.write,
+    scopes.datasets.destroy
+  ]
 }
 
-createAdminAccount(config, creds, function (err, account) {
+township.accounts.register(creds, function (err, account) {
   if (err) return error(err.message)
   console.log('account created')
   console.log('key', account.key)
-  console.log('email', account.auth.basic.email)
-  console.log('scopes', account.access.scopes)
-  console.log('token', account.token)
+  console.log('account', account)
 })
 
 function error (msg, opts) {
-  console.log(`
-    ERROR:
-
-      ${msg}
-  `)
+  opts = opts || {}
+console.log(`
+ERROR:
+  ${msg}
+`)
   if (opts.usage) usage()
   exit(1)
 }
 
 function usage () {
-  console.log(`
-    USAGE:
-
-      ./bin/admin {email} {password}
-
-    DESCRIPTION:
-
-      create an account with the required
-      access permissions to use the server
-
-      email and password are required
-
-    EXAMPLE:
-
-      ./bin/admin hi@static.land oooohsecretpasswordoooh
+console.log(`
+USAGE:
+  ./bin/admin {email} {password}
+DESCRIPTION:
+  create an account with the required
+  access permissions to use the server
+  email and password are required
+EXAMPLE:
+  ./bin/admin hi@static.land oooohsecretpasswordoooh
 `)
 }

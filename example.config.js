@@ -14,8 +14,17 @@ var config = {
     letsEncryptCommand: '/home/staticland/certbot-auto',
     letsEncryptChallengeDir: '/home/staticland/api/html',
     reservedSubdomains: [], // consider the reserved-usernames package, require('reserved-usernames')
-    requiredScopes: {
-      useAPI: 'api:access'
+    publicRegistration: true,
+    allowedEmails: [], // only used if publicRegistration is false
+    scopes: {
+      app: {
+        admin: 'app:admin'
+      },
+      datasets: {
+        read: 'sites:read',
+        write: 'sites:write',
+        destroy: 'sites:destroy'
+      }
     },
     emailTransport: `smtps://${process.env.GMAIL_USER}%40gmail.com:${process.env.GMAIL_PASS}@smtp.gmail.com`,
     fromEmail: 'hi@static.land',
