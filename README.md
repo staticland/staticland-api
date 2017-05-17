@@ -89,6 +89,12 @@ sudo service nginx restart
 npm i -g forever
 ```
 
+#### set the STATICLAND_SECRET environment variable
+
+```
+export STATICLAND_SECRET=SomethingMoreSecretThanThis
+```
+
 #### start the staticland server
 
 ```
