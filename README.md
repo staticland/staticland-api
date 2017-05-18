@@ -11,7 +11,7 @@ A secure home for your static sites.
 
 ## Install
 
-### Installing on Ubuntu 14.04
+### Installing on Ubuntu 16.10
 
 #### Install system dependencies
 
