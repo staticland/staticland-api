@@ -15,7 +15,7 @@ A secure home for your static sites.
 
 #### Install system dependencies
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install git bc build-essential nginx
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
@@ -23,7 +23,7 @@ sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
 #### Install nvm & node
 
-```
+```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
 . ~/.bashrc
 nvm install v6
@@ -31,7 +31,7 @@ nvm install v6
 
 #### Install certbot
 
-```
+```bash
 wget https://dl.eff.org/certbot-auto
 chmod a+x ./certbot-auto
 ./certbot-auto
@@ -39,7 +39,7 @@ chmod a+x ./certbot-auto
 
 #### Install staticland-api
 
-```
+```bash
 git clone https://github.com/staticland/staticland-api.git
 cd staticland-api
 npm i
@@ -49,7 +49,7 @@ npm i
 
 Copy the example config file and make changes if needed:
 
-```
+```bash
 cp example.config.js config.js
 ```
 
@@ -57,7 +57,7 @@ cp example.config.js config.js
 
 In the `.bashrc` file of the user that will run the staticland server add:
 
-```
+```bash
 export NODE_ENV="production"
 ```
 
@@ -72,38 +72,38 @@ Make sure to:
 
 #### Create cert for api server
 
-```
+```bash
 cd ~
 ./certbot-auto certonly --standalone --agree-tos --redirect --duplicate --text --email hi@static.land -d api.static.land
 ```
 
 #### restart nginx
 
-```
+```bash
 sudo service nginx restart
 ```
 
 #### install `forever`
 
-```
+```bash
 npm i -g forever
 ```
 
 #### set the STATICLAND_SECRET environment variable
 
-```
+```bash
 export STATICLAND_SECRET=SomethingMoreSecretThanThis
 ```
 
 #### start the staticland server
 
-```
+```bash
 forever start index.js
 ```
 
 #### renewing certificates 
 
-```
+```bash
 crontab -e
 ```
 
@@ -124,4 +124,4 @@ Sites will get cert renewals based on the `renewEvery` value of the config.js fi
 Every Monday at midnight certbot will check to see if the certificate needs to be renewed.
 
 ## License
-[MIT](LICNESE.md)
+[MIT](LICENSE.md)
